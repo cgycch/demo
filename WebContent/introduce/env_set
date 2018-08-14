@@ -1,0 +1,26 @@
+ 项目中需要用到很多配置文件，不同环境的配置文件是不一样的，因此如果只用一个配置文件，势必会造成配置文件混乱，这里提供一种利用环境变量控制配置文件加载的方法，如下：
+
+一、配置环境变量
+
+        如果是windows环境，只要右击“计算机”->“属性”-"高级"->"高级系统设置"->“环境变量”，增加环境变量即可，例如：config_env=dev。
+
+        如果是linux环境，则修改tomcat的文件即可，具体为：../{tomcat_path}/bin/catalina.sh，找到“JAVA_OPTS="$JAVA_OPTS”，加上参数即可，例如：JAVA_OPTS="$JAVA_OPTS -Dconfig_env=uat"。
+
+ 
+
+二、系统配置文件
+
+       假设我们的开发环境分为dev、uat和生产环境，则我们可以在系统中设置三个配置文件：
+
+　　config_dev.properties、config_uat.properties、config_prd.properties。
+
+三、Spring加载
+
+       Spring配置文件在加载时，设置“固定名+变量名”的方式进行加载，如下：
+
+        <!-- 读取配置文件 -->
+<context:property-placeholder location="classpath:config_${config_env}.properties" ignore-unresolvable="true"  /> 
+
+ 
+
+这里的config_${config_env}.properties在不同的环境中就能加载不同的配置文件了。
