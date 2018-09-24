@@ -9,12 +9,15 @@ import java.util.TimeZone;
 public class DemoApp {
 	
 	public static void main(String[] args) throws ParseException {
-		String frequency = "MONTHLY";
+		//String frequency = "DAILY";
+		String frequency = "WEEKLY";
+		//String frequency = "MONTHLY";
 		//String frequency = "QUARTERLY";
 		//String frequency = "ANNUALLY";
 		
 		//String frequencyValue = "FBD";
-		String frequencyValue = "25";
+		String frequencyValue = "Tues";
+		//String frequencyValue = "25";
 		System.out.println("frequency: " + frequency);
 		System.out.println("frequencyValue: " + frequencyValue);
 
